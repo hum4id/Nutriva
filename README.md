@@ -18,7 +18,6 @@ Jalankan `supabase_schema.sql`, lalu migrasi di `supabase/migrations/` secara be
 ## AI
 
 - Backend AI, deploy ke Hugging Face Spaces, keamanan: `ai-service/README.md`
-- Ringkasan integrasi & langkah aktivasi: `docs/AI_INTEGRATION.md`
 - Model card: `ai-service/docs/MODEL_CARD.md`
 
 Semua API key LLM hanya disimpan di server AI. Jangan menaruh secret apa pun di variabel `VITE_*`, karena nilainya ikut ter-bundle ke browser.
