@@ -13,7 +13,7 @@ npm run lint && npm run build && npm run test:who
 
 ## Database
 
-Jalankan `supabase_schema.sql`, lalu migrasi di `supabase/migrations/` secara berurutan.
+Jalankan `supabase_schema.sql`, lalu migrasi di `supabase/migrations/` secara berurutan, lalu `supabase/seed/nutrition_seed.sql` (79 bahan makanan + 30 resep balita Kemenkes; sumber dan QA di `ai-service/nutrition_data/README.md`). `supabase_seed.sql` lama berisi data dummy dan sudah deprecated.
 
 ## AI
 
