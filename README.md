@@ -1,16 +1,23 @@
-# React + Vite
+# Nutriva
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web pendamping gizi & tumbuh kembang balita (React 19 + Vite + Supabase) dengan layanan AI terpisah (`ai-service/`, FastAPI).
 
-Currently, two official plugins are available:
+## Menjalankan frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+cp .env.example .env      # isi VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY, VITE_AI_API_URL
+npm run dev
+npm run lint && npm run build && npm run test:who
+```
 
-## React Compiler
+## Database
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Jalankan `supabase_schema.sql`, lalu migrasi di `supabase/migrations/` secara berurutan, lalu `supabase/seed/nutrition_seed.sql` (1.063 bahan makanan berbasis TKPI 2017 + 30 resep balita Kemenkes; sumber dan QA di `ai-service/nutrition_data/README.md`). `supabase_seed.sql` lama berisi data dummy dan sudah deprecated.
 
-## Expanding the ESLint configuration
+## AI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Backend AI, deploy ke Hugging Face Spaces, keamanan: `ai-service/README.md`
+- Model card: `ai-service/docs/MODEL_CARD.md`
+
+Semua API key LLM hanya disimpan di server AI. Jangan menaruh secret apa pun di variabel `VITE_*`, karena nilainya ikut ter-bundle ke browser.
